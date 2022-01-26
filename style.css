@@ -1,0 +1,1232 @@
+.sticky{
+  position: sticky;
+  top: 0;
+}
+html{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+body{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+.notificationon{
+  position: fixed;
+  top: 1%;
+  right: 0%;
+  height: 5%;
+  width: 10%;
+  background: #1593ff;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 100%;
+  transition: 0.2s;
+}
+.notificationon img{
+  height: 90%;
+  width: 90%;
+  align-self: center;
+  justify-self: center;
+}
+.notification{
+  position: fixed;
+  top: 1%;
+  right: -10%;
+  height: 5%;
+  width: 10%;
+  background: #1593ff;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  grid-template-rows: 100%;
+  transition: 0.2s;
+}
+.notification img{
+  height: 90%;
+  width: 90%;
+  align-self: center;
+  justify-self: center;
+}
+.notititle{
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  align-self: center;
+}
+.submitandavailableidcontainer{
+  height: 90%;
+  width: 30%;
+  display: inline-block;
+  position: fixed;
+  left: 5%;
+  top: 5%;
+}
+.submitidformcontainer{
+  width: 98%;
+  height: 29%;
+  background: linear-gradient(
+  90deg, rgba(24,19,111,1) 0%, rgba(33,33,194,1) 53%, rgba(24,216,255,1) 100%);
+  margin: 1%;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: 100%;
+}
+.inputs{
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 25% 25% 25% 25%;
+  height: 90%;
+  width: 90%;
+  align-self: center;
+  justify-self: center;
+}
+.inputname::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(255, 255, 255);
+  opacity: 0.7; /* Firefox */
+}
+.inputmobile::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(255, 255, 255);
+  opacity: 0.7; /* Firefox */
+}
+.inputamount::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(255, 255, 255);
+  opacity: 0.7; /* Firefox */
+}
+.inputname{
+  height: 60%;
+  width: 70%;
+  align-self: center;
+  justify-self: center;
+  background: none;
+  border: none;
+  border-bottom: 3px solid lawngreen;
+  text-align: center;
+  outline: none;
+  color: white;
+  font-weight: 600;
+  font-size: 25px;
+}
+.inputmobile{
+  height: 60%;
+  width: 70%;
+  align-self: center;
+  justify-self: center;
+  background: none;
+  border: none;
+  border-bottom: 3px solid lawngreen;
+  text-align: center;
+  outline: none;
+  color: white;
+  font-weight: 600;
+  font-size: 25px;
+}
+.inputamount{
+  height: 60%;
+  width: 70%;
+  align-self: center;
+  justify-self: center;
+  background: none;
+  border: none;
+  border-bottom: 3px solid lawngreen;
+  text-align: center;
+  outline: none;
+  color: white;
+  font-weight: 600;
+  font-size: 25px;
+}
+.inputpaid{
+  position: relative;
+  height: 70%;
+  width: 50%;
+  background: #c6c6c6;
+  -webkit-appearance: none;
+  outline: none;
+  transition: 0.5s;
+  box-shadow: inset 0 0 5px rgb(0 0 0 / 20%);
+  align-self: center;
+  justify-self: center;
+}
+.inputpaid:checked{
+  background: #03a9f4;
+}
+.inputpaid:before{
+  content: 'DUE';
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: #fff;
+  transition: 0.5s;
+}
+.inputpaid:checked:before{
+  left:50%;
+  content: 'PAID';
+}
+.sendbtn{
+  padding: 8% 8%;
+  border-radius: 15% 15%;
+  align-self: center;
+  justify-self: center;
+  background-color: #5bff00;
+  color: black;
+  font-size: 30px;
+  font-weight: 600;
+}
+.availableidcontainer{
+  width: 98%;
+  height: 69%;
+  background-color: #F1F1FF;
+  overflow: scroll;
+  overflow-x: hidden;
+  margin: 1%;
+  border-radius: 10px;
+}
+.availableidcontainer::-webkit-scrollbar {
+  width: 5px;
+}
+.availableidcontainer::-webkit-scrollbar-track {
+  background: #F1F1FF;
+}
+.availableidcontainer::-webkit-scrollbar-thumb {
+  background: #888;
+}
+.availableidcontainer::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.availableidhead{
+  height: 5%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  align-items: center;
+  background-color: lawngreen;
+}
+.availableidheadtitle{
+  margin-left: 5%;
+  font-size: 20px;
+  font-weight: 600;
+}
+.availableidhead2{
+  height: 5%;
+  width: 100%;
+  background-color: #422a64;
+  display: grid;
+  grid-template-columns: 10% 40% 40% 10%;
+  grid-template-rows: 100%;
+  align-items: center;
+  color: wheat;
+  font-weight: 600;
+  font-size: 20px;
+  justify-items: center;
+  border-bottom: 1px solid white;
+}
+.availableidlist{
+  height: 5%;
+  width: 100%;
+}
+.availableidcol{
+  height: 100%;
+  width: 100%;
+  background-color: #e3d8ff;
+  display: grid;
+  grid-template-columns: 10% 40% 40% 10%;
+  grid-template-rows: 100%;
+  border-bottom: 1px solid white;
+}
+.availableidcolgrid{
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+}
+.availableidcolgridimg{
+  height: 100%;
+  width: 100%;
+  justify-self: center;
+  align-self: center;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+}
+.availableidcolgridimg img{
+  height: 80%;
+  align-self: center;
+  justify-self: center;
+}
+.cashandduesalescontainer{
+  width: 60%;
+  height: 90%;
+  display: inline-block;
+  position: fixed;
+  right: 5%;
+  top: 5%;
+}
+.cashsales{
+  width: 98%;
+  height: 48%;
+  background-color: #e2ffde;
+  margin: 1%;
+  border-radius: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.cashsales::-webkit-scrollbar {
+  width: 5px;
+}
+.cashsales::-webkit-scrollbar-track {
+  background: #F1F1FF;
+}
+.cashsales::-webkit-scrollbar-thumb {
+  background: #888;
+}
+.cashsales::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.cashsalesidhead{
+  height: 8%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 100%;
+  align-items: center;
+  background-color: lawngreen;
+}
+.cashfrom{
+  width: max-content;
+  margin-left: 30%;
+}
+.cashto{
+  width: max-content;
+  margin-left: 30%;
+}
+.cashsalesidheadtitle{
+  font-size: 20px;
+  font-weight: 600;
+  width: max-content;
+  margin-left: 10%;
+}
+.cashsalesidsearch{
+  border: none;
+  width: 50%;
+  height: 65%;
+  background-color: #7CFC00;
+  outline: none;
+  color: black;
+  border-bottom: 2px solid white;
+  text-align: center;
+  margin-left: 55%;
+}
+.cashsalesidsearch::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(0, 0, 0);
+  opacity: 0.9; /* Firefox */
+}
+.cashexportbtn{
+  background: white;
+  width: max-content;
+  padding: 2% 8%;
+  font-weight: 600;
+  margin-left: 55%;
+}
+.cashsalesidhead2{
+  height: 7%;
+  width: 100%;
+  background-color: #E3DFED;
+  display: grid;
+  grid-template-columns: 10% 14% 12% 12% 12% 20% 10% 10%;
+  grid-template-rows: 100%;
+  align-items: center;
+  justify-items: center;
+  border-bottom: 1px solid white;
+  background-color: #422a64;
+  font-weight: 600;
+  color: white;
+  font-size: 20px;
+}
+.cashsalesidlist{
+  height: 7%;
+  width: 100%;
+}
+.cashsalesidcol{
+  height: 100%;
+  width: 100%;
+  background-color: #e3d8ff;
+  display: grid;
+  grid-template-columns: 10% 14% 12% 12% 12% 20% 10% 10%;
+  grid-template-rows: 100%;
+  border-bottom: 1px solid white;
+}
+.cashsalesidcolgrid{
+  justify-self: center;
+  align-self: center;
+}
+.cashsalesidcolgridimg{
+  justify-self: center;
+  align-self: center;
+  width: 80%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+}
+.cashsalesidcolgridimg img{
+  height: 80%;
+  justify-self: center;
+  align-self: center;
+}
+.duesales{
+  width: 98%;
+  height: 48%;
+  background-color: lavenderblush;
+  margin: 1%;
+  border-radius: 10px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+.duesales::-webkit-scrollbar {
+  width: 5px;
+}
+.duesales::-webkit-scrollbar-track {
+  background: #F1F1FF;
+}
+.duesales::-webkit-scrollbar-thumb {
+  background: #888;
+}
+.duesales::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.duesalesidhead{
+  height: 8%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 100%;
+  align-items: center;
+  background-color: lawngreen;
+}
+.duefrom{
+  width: max-content;
+  margin-left: 30%;
+}
+.dueto{
+  width: max-content;
+  margin-left: 30%;
+}
+.duesalesidheadtitle{
+  font-size: 20px;
+  font-weight: 600;
+  width: max-content;
+  margin-left: 10%;
+}
+.duesalesidsearch{
+  border: none;
+  width: 50%;
+  height: 65%;
+  background-color: #7CFC00;
+  outline: none;
+  color: black;
+  border-bottom: 2px solid white;
+  text-align: center;
+  margin-left: 55%;
+}
+.duesalesidsearch::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(0, 0, 0);
+  opacity: 0.9; /* Firefox */
+}
+.dueexportbtn{
+  background: white;
+  width: max-content;
+  padding: 2% 8%;
+  font-weight: 600;
+  margin-left: 55%;
+}
+.duesalesidhead2{
+  height: 7%;
+  width: 100%;
+  background-color: #E3DFED;
+  display: grid;
+  grid-template-columns: 10% 14% 12% 12% 12% 20% 10% 10%;
+  grid-template-rows: 100%;
+  align-items: center;
+  justify-items: center;
+  border-bottom: 1px solid white;
+  background-color: #422a64;
+  font-weight: 600;
+  color: white;
+  font-size: 20px;
+}
+.duesalesidlist{
+  height: 7%;
+  width: 100%;
+}
+.duesalesidcol{
+  height: 100%;
+  width: 100%;
+  background-color: #e3d8ff;
+  display: grid;
+  grid-template-columns: 10% 14% 12% 12% 12% 20% 10% 10%;
+  grid-template-rows: 100%;
+  border-bottom: 1px solid white;
+}
+.duesalesidcolgrid{
+  justify-self: center;
+  align-self: center;
+}
+.duesalesidcolgridimg{
+  justify-self: center;
+  align-self: center;
+  width: 80%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+}
+.duesalesidcolgridimg img{
+  height: 80%;
+  justify-self: center;
+  align-self: center;
+}
+.fileuploadbtn{
+  position: fixed;
+  height: 6%;
+  right: 2%;
+  bottom: 3%;
+}
+.fileuploadbtn img{
+  position: relative;
+  height: 100%;
+}
+.fileuploadcontainer{
+  display: none;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #00000070;
+  justify-content: center;
+  align-items: center;
+}
+.fileuploadform{
+  position: fixed;
+  height: 25%;
+  width: 40%;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.file{
+  display: none;
+}
+.selectfile{
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border: 1px solid rgb(154, 47, 255);
+  border-radius: 5px;
+  text-align: center;
+  padding: 1% 3%;
+  overflow: hidden;
+}
+.uploadbtn{
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 3%;
+  padding: 1% 1%;
+  text-align: center;
+  background-color: #43ff43;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+.fileuploadformclose{
+  position: fixed;
+  right: 30.2%;
+  top: 38%;
+  height: 4%;
+  z-index: 1;
+}
+.fileuploadformclose img{
+  height: 100%;
+}
+.downloadcontainer{
+  display: none;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #00000070;
+  justify-content: center;
+  align-items: center;
+}
+.downloadform{
+  position: fixed;
+  display: grid;
+  grid-template-rows: 30% 70%;
+  height: 20%;
+  width: 30%;
+  background-color: white;
+}
+.downloadtitle{
+  font-size: 30px;
+  font-weight: 600;
+  align-self: center;
+  justify-self: center;
+}
+.downloadlink{
+  align-self: center;
+  justify-self: center;
+}
+.downloadbtn{
+  align-self: center;
+  justify-self: center;
+}
+.downloadclose{
+  position: fixed;
+  top: 40%;
+  right: 35%;
+  height: 4%;
+  width: 2%;
+}
+.downloadclose img{
+  height: 100%;
+  width: 100%;
+}
+.logoutbtn{
+  position: fixed;
+  display: inline-block;
+  height: 6%;
+  left: 2%;
+  bottom: 3%;
+}
+.logoutbtn img{
+  position: relative;
+  height: 100%;
+}
+
+@media only screen and (max-width: 450px) {
+
+  html{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+  body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+  }
+  .notificationon{
+    position: fixed;
+    top: 0%;
+    right: 10%;
+    height: 5%;
+    width: 78%;
+    background: #1593ff;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 100%;
+    transition: 0.2s;
+  }
+  .notificationon img{
+    height: 90%;
+    width: 90%;
+    align-self: center;
+    justify-self: center;
+  }
+  .notification{
+    position: fixed;
+    top: -5%;
+    right: 10%;
+    height: 5%;
+    width: 78%;
+    background: #1593ff;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: 100%;
+    transition: 0.2s;
+  }
+  .notification img{
+    height: 90%;
+    width: 90%;
+    align-self: center;
+    justify-self: center;
+  }
+  .notititle{
+    text-align: center;
+    font-size: 16px;
+    align-self: center;
+    font-weight: 600;
+    color: white;
+    align-self: center;
+  }
+  .submitandavailableidcontainer{
+    height: 50%;
+    width: 90%;
+    display: inline-block;
+    position: relative;
+    left: 5%;
+    top: 5%;
+  }
+  .submitidformcontainer{
+    width: 98%;
+    height: 50%;
+    background: linear-gradient(
+    90deg, rgba(24,19,111,1) 0%, rgba(33,33,194,1) 53%, rgba(24,216,255,1) 100%);
+    margin: 1%;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-rows: 100%;
+  }
+  .inputs{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 25% 25% 25% 25%;
+    height: 90%;
+    width: 90%;
+    align-self: center;
+    justify-self: center;
+  }
+  .inputname::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(255, 255, 255);
+    opacity: 0.7; /* Firefox */
+  }
+  .inputmobile::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(255, 255, 255);
+    opacity: 0.7; /* Firefox */
+  }
+  .inputamount::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(255, 255, 255);
+    opacity: 0.7; /* Firefox */
+  }
+  .inputname{
+    height: 60%;
+    width: 70%;
+    align-self: center;
+    justify-self: center;
+    background: none;
+    border: none;
+    border-bottom: 3px solid lawngreen;
+    text-align: center;
+    outline: none;
+    color: white;
+    font-weight: 600;
+    font-size: 25px;
+  }
+  .inputmobile{
+    height: 60%;
+    width: 70%;
+    align-self: center;
+    justify-self: center;
+    background: none;
+    border: none;
+    border-bottom: 3px solid lawngreen;
+    text-align: center;
+    outline: none;
+    color: white;
+    font-weight: 600;
+    font-size: 25px;
+  }
+  .inputamount{
+    height: 60%;
+    width: 70%;
+    align-self: center;
+    justify-self: center;
+    background: none;
+    border: none;
+    border-bottom: 3px solid lawngreen;
+    text-align: center;
+    outline: none;
+    color: white;
+    font-weight: 600;
+    font-size: 25px;
+  }
+  .inputpaid{
+    position: relative;
+    height: 70%;
+    width: 50%;
+    background: #c6c6c6;
+    -webkit-appearance: none;
+    outline: none;
+    transition: 0.5s;
+    box-shadow: inset 0 0 5px rgb(0 0 0 / 20%);
+    align-self: center;
+    justify-self: center;
+  }
+  .inputpaid:checked{
+    background: #03a9f4;
+  }
+  .inputpaid:before{
+    content: 'DUE';
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #fff;
+    transition: 0.5s;
+  }
+  .inputpaid:checked:before{
+    left:50%;
+    content: 'PAID';
+  }
+  .sendbtn{
+    padding: 8% 8%;
+    border-radius: 15% 15%;
+    align-self: center;
+    justify-self: center;
+    background-color: #5bff00;
+    color: black;
+    font-size: 30px;
+    font-weight: 600;
+  }
+  .availableidcontainer{
+    width: 98%;
+    height: 50%;
+    background-color: #F1F1FF;
+    overflow: scroll;
+    overflow-x: hidden;
+    margin: 1%;
+    border-radius: 10px;
+  }
+  .availableidcontainer::-webkit-scrollbar {
+    width: 5px;
+  }
+  .availableidcontainer::-webkit-scrollbar-track {
+    background: #F1F1FF;
+  }
+  .availableidcontainer::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  .availableidcontainer::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .availableidhead{
+    height: 15%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+    align-items: center;
+    background-color: lawngreen;
+  }
+  .availableidheadtitle{
+    margin-left: 5%;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .availableidhead2{
+    height: 13%;
+    width: 100%;
+    background-color: #422a64;
+    display: grid;
+    grid-template-columns: 10% 40% 40% 10%;
+    grid-template-rows: 100%;
+    align-items: center;
+    color: wheat;
+    font-weight: 600;
+    font-size: 20px;
+    justify-items: center;
+    border-bottom: 1px solid white;
+  }
+  .availableidlist{
+    height: 14%;
+    width: 100%;
+  }
+  .availableidcol{
+    height: 100%;
+    width: 100%;
+    background-color: #e3d8ff;
+    display: grid;
+    grid-template-columns: 10% 40% 40% 10%;
+    grid-template-rows: 100%;
+    border-bottom: 1px solid white;
+  }
+  .availableidcolgrid{
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+  }
+  .availableidcolgridimg{
+    height: 100%;
+    width: 100%;
+    justify-self: center;
+    align-self: center;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+  }
+  .availableidcolgridimg img{
+    height: 80%;
+    align-self: center;
+    justify-self: center;
+  }
+  .cashandduesalescontainer{
+    width: 90%;
+    height: 90%;
+    display: inline-block;
+    position: relative;
+    left: 5%;
+    top: 5%;
+  }
+  .cashsales{
+    width: 98%;
+    height: 48%;
+    background-color: #e2ffde;
+    margin: 1%;
+    border-radius: 10px;
+    overflow: scroll;
+    overflow-x: scroll;
+  }
+  .cashsales::-webkit-scrollbar {
+    width: 5px;
+  }
+  .cashsales::-webkit-scrollbar-track {
+    background: #F1F1FF;
+  }
+  .cashsales::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  .cashsales::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .cashsalesidhead{
+    height: 8%;
+    width: 300%;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 100%;
+    align-items: center;
+    background-color: lawngreen;
+  }
+  .cashfrom{
+    width: max-content;
+    margin-left: 30%;
+  }
+  .cashto{
+    width: max-content;
+    margin-left: 30%;
+  }
+  .cashsalesidheadtitle{
+    font-size: 20px;
+    font-weight: 600;
+    width: max-content;
+    margin-left: 10%;
+  }
+  .cashsalesidsearch{
+    border: none;
+    width: 50%;
+    height: 65%;
+    background-color: #7CFC00;
+    outline: none;
+    color: black;
+    border-bottom: 2px solid white;
+    text-align: center;
+    margin-left: 55%;
+  }
+  .cashsalesidsearch::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(0, 0, 0);
+    opacity: 0.9; /* Firefox */
+  }
+  .cashexportbtn{
+    background: white;
+    width: max-content;
+    padding: 2% 8%;
+    font-weight: 600;
+    margin-left: 55%;
+  }
+  .cashsalesidhead2{
+    height: 7%;
+    width: 300%;
+    background-color: #E3DFED;
+    display: grid;
+    grid-template-columns: 10% 14% 12% 12% 12% 20% 10% 10%;
+    grid-template-rows: 100%;
+    align-items: center;
+    justify-items: center;
+    border-bottom: 1px solid white;
+    background-color: #422a64;
+    font-weight: 600;
+    color: white;
+    font-size: 20px;
+  }
+  .cashsalesidlist{
+    height: 7%;
+    width: 300%;
+  }
+  .cashsalesidcol{
+    height: 100%;
+    width: 100%;
+    background-color: #e3d8ff;
+    display: grid;
+    grid-template-columns: 10% 14% 12% 12% 12% 20% 10% 10%;
+    grid-template-rows: 100%;
+    border-bottom: 1px solid white;
+  }
+  .cashsalesidcolgrid{
+    justify-self: center;
+    align-self: center;
+  }
+  .cashsalesidcolgridimg{
+    justify-self: center;
+    align-self: center;
+    width: 80%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+  }
+  .cashsalesidcolgridimg img{
+    height: 80%;
+    justify-self: center;
+    align-self: center;
+  }
+  .duesales{
+    width: 98%;
+    height: 48%;
+    background-color: lavenderblush;
+    margin: 1%;
+    border-radius: 10px;
+    overflow: scroll;
+    overflow-x: scroll;
+  }
+  .duesales::-webkit-scrollbar {
+    width: 5px;
+  }
+  .duesales::-webkit-scrollbar-track {
+    background: #F1F1FF;
+  }
+  .duesales::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  .duesales::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .duesalesidhead{
+    height: 8%;
+    width: 300%;
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 100%;
+    align-items: center;
+    background-color: lawngreen;
+  }
+  .duefrom{
+    width: max-content;
+    margin-left: 30%;
+  }
+  .dueto{
+    width: max-content;
+    margin-left: 30%;
+  }
+  .duesalesidheadtitle{
+    font-size: 20px;
+    font-weight: 600;
+    width: max-content;
+    margin-left: 10%;
+  }
+  .duesalesidsearch{
+    border: none;
+    width: 50%;
+    height: 65%;
+    background-color: #7CFC00;
+    outline: none;
+    color: black;
+    border-bottom: 2px solid white;
+    text-align: center;
+    margin-left: 55%;
+  }
+  .duesalesidsearch::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(0, 0, 0);
+    opacity: 0.9; /* Firefox */
+  }
+  .dueexportbtn{
+    background: white;
+    width: max-content;
+    padding: 2% 8%;
+    font-weight: 600;
+    margin-left: 55%;
+  }
+  .duesalesidhead2{
+    height: 7%;
+    width: 300%;
+    background-color: #E3DFED;
+    display: grid;
+    grid-template-columns: 10% 14% 12% 12% 12% 20% 10% 10%;
+    grid-template-rows: 100%;
+    align-items: center;
+    justify-items: center;
+    border-bottom: 1px solid white;
+    background-color: #422a64;
+    font-weight: 600;
+    color: white;
+    font-size: 20px;
+  }
+  .duesalesidlist{
+    height: 7%;
+    width: 300%;
+  }
+  .duesalesidcol{
+    height: 100%;
+    width: 100%;
+    background-color: #e3d8ff;
+    display: grid;
+    grid-template-columns: 10% 14% 12% 12% 12% 20% 10% 10%;
+    grid-template-rows: 100%;
+    border-bottom: 1px solid white;
+  }
+  .duesalesidcolgrid{
+    justify-self: center;
+    align-self: center;
+  }
+  .duesalesidcolgridimg{
+    justify-self: center;
+    align-self: center;
+    width: 80%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;
+  }
+  .duesalesidcolgridimg img{
+    height: 80%;
+    justify-self: center;
+    align-self: center;
+  }
+  .fileuploadbtn{
+    position: relative;
+    display: inline-block;
+    height: 6%;
+    left: 50%;
+    top: 5%;
+  }
+  .fileuploadbtn img{
+    position: relative;
+    height: 100%;
+  }
+  .fileuploadcontainer{
+    display: none;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #00000070;
+    justify-content: center;
+    align-items: center;
+  }
+  .fileuploadform{
+    position: fixed;
+    height: 15%;
+    width: 85%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .file{
+    display: none;
+  }
+  .selectfile{
+    font-size: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: 1px solid rgb(154, 47, 255);
+    border-radius: 5px;
+    text-align: center;
+    padding: 1% 3%;
+    overflow: hidden;
+  }
+  .uploadbtn{
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 3%;
+    padding: 1% 1%;
+    text-align: center;
+    background-color: #43ff43;
+    border-radius: 5px;
+    border: 2px solid black;
+  }
+  .fileuploadformclose{
+    position: fixed;
+    right: 8.2%;
+    top: 43%;
+    height: 4%;
+    z-index: 1;
+  }
+  .fileuploadformclose img{
+    height: 100%;
+  }
+  .downloadcontainer{
+    display: none;
+    position: fixed;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #00000070;
+    justify-content: center;
+    align-items: center;
+  }
+  .downloadform{
+    position: fixed;
+    display: grid;
+    grid-template-rows: 30% 70%;
+    height: 20%;
+    width: 30%;
+    background-color: white;
+  }
+  .downloadtitle{
+    font-size: 30px;
+    font-weight: 600;
+    align-self: center;
+    justify-self: center;
+  }
+  .downloadlink{
+    align-self: center;
+    justify-self: center;
+  }
+  .downloadbtn{
+    align-self: center;
+    justify-self: center;
+  }
+  .downloadclose{
+    position: fixed;
+    top: 40%;
+    right: 35%;
+    height: 4%;
+    width: 2%;
+  }
+  .downloadclose img{
+    height: 100%;
+    width: 100%;
+  }
+  .logoutbtn{
+    position: relative;
+    height: 6%;
+    left: 20%;
+    top: 5%;
+  }
+  .logoutbtn img{
+    position: relative;
+    height: 100%;
+  }
+
+}
