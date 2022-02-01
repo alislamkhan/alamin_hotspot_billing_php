@@ -8,6 +8,14 @@ if (isset($_POST['logout'])) {
     session::destroy();
   }
 }
+if (isset($_POST['newpass'])) {
+  $change = $_POST['newpass'];
+  include 'db.php';
+  $db = new db();
+
+  $query = "UPDATE admin SET pass = '$change' WHERE id = 1";
+  $result = $db->pdo->query($query);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,18 +23,24 @@ if (isset($_POST['logout'])) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Billing software</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="notification" id="notification"><img src="tick.png" alt=""><div class="notititle">Id send successfully.</div></div>
+  <div class="navbar">
+    <div class="leftnav">Billing software</div>
+    <div class="rightnav">Alamin</div>
+  </div>
 <div class="submitandavailableidcontainer">
     <div class="submitidformcontainer">
-      <div class="inputs">
-        <input type="text" name="name" id="name" class="inputname" placeholder="Name" autocomplete="off">
-        <input type="text" name="mobile" id="mobile" class="inputmobile" placeholder="Mobile" autocomplete="off">
-        <input type="text" name="amount" id="amount" class="inputamount" placeholder="Amount" autocomplete="off">
-        <input type="checkbox" name="paid" id="paid" class="inputpaid">
+      <input type="text" name="name" id="name" class="inputname" placeholder="Name" autocomplete="off">
+      <input type="text" name="mobile" id="mobile" class="inputmobile" placeholder="Mobile" autocomplete="off">
+      <input type="text" name="zone" id="zone" class="inputzone" placeholder="Zone" autocomplete="off">
+      <input type="text" name="amount" id="amount" class="inputamount" placeholder="Amount" autocomplete="off">
+      <input type="checkbox" name="paid" id="paid" class="inputpaid">
+      <div class="sendsms">
+        <input type="checkbox" name="sms" id="sms" class="inputsms" checked>
+        <div class="sendsmstitle">Send SMS?</div>
       </div>
       <div class="sendbtn">SEND</div>
     </div>
@@ -64,6 +78,7 @@ if (isset($_POST['logout'])) {
           <div class="cashsalesidgrid">Username</div>
           <div class="cashsalesidgrid">Password</div>
           <div class="cashsalesidgrid">Date</div>
+          <div class="cashsalesidgrid">Zone</div>
           <div class="cashsalesidgrid">Amount</div>
         </div>
       </div>
@@ -87,6 +102,7 @@ if (isset($_POST['logout'])) {
           <div class="duesalesidgrid">Username</div>
           <div class="duesalesidgrid">Password</div>
           <div class="duesalesidgrid">Date</div>
+          <div class="duesalesidgrid">Zone</div>
           <div class="duesalesidgrid">Amount</div>
         </div>
       </div>
@@ -95,6 +111,12 @@ if (isset($_POST['logout'])) {
 
       </div>
     </div>
+  </div>
+  <div class="dropdown">
+    <div class="passwordchange">Change password</div>
+    <div class="uploaddata">Upload data</div>
+    <div class="backupdatabase">Backup database</div>
+    <div class="logout">Logout</div>
   </div>
   <div class="fileuploadcontainer">
     <div class="fileuploadformclose"><img src="close.png" alt=""></div>
@@ -113,8 +135,24 @@ if (isset($_POST['logout'])) {
       <a href="export.csv" class="downloadlink" download><div class="downloadbtn"><img src="download.png" alt=""></div></a>
     </div>
   </div>
-  <div class="logoutbtn"><img src="logout.png" alt=""></div>
-  <div class="fileuploadbtn"><img src="upload.png" alt=""></div>
+  <div class="dbdownloadcontainer">
+    <div class="dbdownloadform">
+      <div class="dbdownloadclose"><img src="close.png" alt=""></div>
+      <div class="dbdownloadtitle">Database backup is ready for download</div>
+      <a href="billing.sql" class="dbdownloadlink" download><div class="dbdownloadbtn"><img src="download.png" alt=""></div></a>
+    </div>
+  </div>
+  <div class="passwordchangecontainer">
+    <div class="passwordchangeform">
+      <div class="passwordchangeclose"><img src="close.png" alt=""></div>
+      <input type="text" class="passwordchangefield" id="passwordchange" placeholder="Enter new password">
+      <div class="passwordchangebtn">Update</div>
+    </div>
+  </div>
+  <div class="popupcontainer">
+    <div class="popupclose"><img src="close.png" alt=""></div>
+  </div>  
+  <div class="notification" id="notification"><img src="tick.png" alt=""><div class="notititle">Id send successfully.</div></div>
   <script src="jquery.min.js"></script>
   <script src="main.js"></script>
 </body>

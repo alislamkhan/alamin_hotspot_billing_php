@@ -321,7 +321,12 @@
       $customermobile = "+88".$_POST["customermobile"];
       $customeramount = $_POST["customeramount"];
       $paidstatus = $_POST["paidstatus"];
-      $text = $customername.", Your internet pack was purchased succssfully. username: ".$username." password: ".$password." total cost: ".$customeramount."TK.";
+      $selldate= date("d-M-Y");
+      $selltime= date("h:i:sa");
+      $text = "Dear User,
+       Your ID: ".$username."
+       Your Password: ".$password."
+       Purchsed date: ".$selldate;
       try {
         // Send a message using the primary device.
         $msg = sendSingleMessage($customermobile, $text);
@@ -330,6 +335,7 @@
       } catch (Exception $e) {
         echo $e->getMessage();
       }
+      echo $text;
     }
 
   }

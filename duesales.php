@@ -12,13 +12,14 @@
     $no = 1;
     while ($data = $result->fetch(PDO::FETCH_ASSOC)) {
     ?>
-        <div class="duesalesidcol">
+        <div class="duesalesidcol" data-popupid="<?php echo $data['id']?>">
           <div class="duesalesidcolgrid"><?php echo $no ?></div>
           <div class="duesalesidcolgrid"><?php echo $data['name'] ?></div>
           <div class="duesalesidcolgrid"><?php echo $data['mobile'] ?></div>
           <div class="duesalesidcolgrid"><?php echo $data['username'] ?></div>
           <div class="duesalesidcolgrid"><?php echo $data['password'] ?></div>
           <div class="duesalesidcolgrid"><?php echo date('h:i A', strtotime($data['sell_time'])) ." ". date('d-M-Y', strtotime($data['sell_date']))?></div>
+          <div class="duesalesidcolgrid"><?php echo $data['zone'] ?></div>
           <div class="duesalesidcolgrid"><?php echo $data['amount'] ?></div>
           <div class="duesalesidcolgridimg"><img src="update.png" alt="" id="updatedue" data-id="<?php echo $data['id'] ?>"><img src="delete.png" alt="" id="delete" data-id="<?php echo $data['id'] ?>"></div>
         </div>
@@ -35,7 +36,7 @@
     $no = 1;
     while ($data = $result->fetch(PDO::FETCH_ASSOC)) {
     ?>
-        <div class="duesalesidcol">
+        <div class="duesalesidcol" data-popupid="<?php echo $data['id']?>">
           <div class="duesalesidcolgrid"><?php echo $no ?></div>
           <div class="duesalesidcolgrid"><?php echo $data['name'] ?></div>
           <div class="duesalesidcolgrid"><?php echo $data['mobile'] ?></div>

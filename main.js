@@ -11,18 +11,31 @@ $(window).ready(function (){
 
   $(document).keydown(function(event) {
     if (event.which === 13){
+      if ($(".inputpaid").is(":checked")) {
+        popupid = -1;
+      }else{
+        popupid = 01;
+      }
       sendsms();
       sendit();
+      popup();
       event.preventDefault();
     }
   });
 
   $(document).on("click",".sendbtn",function(){
+    if ($(".inputpaid").is(":checked")) {
+      popupid = -1;
+    }else{
+      popupid = 01;
+    }
     sendsms();
     sendit();
+    popup();
   })
   function sendit(){
     customername = $(".inputname").val();
+    customerzone = $(".inputzone").val();
     customermobile = $(".inputmobile").val();
     customeramount = $(".inputamount").val();
     if ($(".inputpaid").is(":checked")) {
@@ -34,7 +47,7 @@ $(window).ready(function (){
       url:"sendit.php",
       method:"POST",
       async:false,
-      data:{customername:customername,customermobile:customermobile,customeramount:customeramount,paidstatus:paidstatus},
+      data:{customername:customername,customermobile:customermobile,customerzone:customerzone,customeramount:customeramount,paidstatus:paidstatus},
       success:function(data){
         console.log("send success");
         availableid();
@@ -42,8 +55,10 @@ $(window).ready(function (){
         duesalesid();
         document.getElementById('name').value = '';
         document.getElementById('mobile').value = '';
+        document.getElementById('zone').value = '';
         document.getElementById('amount').value = '';
         $("#paid").prop("checked", false);
+        $("#sms").prop("checked", true);
         $(".notititle").text("Id sent successfully.");
         $("#notification").removeClass("notification");
         $("#notification").addClass("notificationon");
@@ -58,6 +73,7 @@ $(window).ready(function (){
   function sendsms(){
     customername = $(".inputname").val();
     customermobile = $(".inputmobile").val();
+    customerzone = $(".inputzone").val();
     customeramount = $(".inputamount").val();
     
     if ($(".inputpaid").is(":checked")) {
@@ -65,22 +81,108 @@ $(window).ready(function (){
     }else{
       paidstatus = "due";
     }
-    
-    lenth = customermobile.length;
-    if (lenth < 11) {
-      console.log("without sms");
+
+    if ($(".inputsms").is(":checked")) {
+      lenth = customermobile.length;
+      if (lenth < 11) {
+        console.log("without sms");
+      }else{
+        $.ajax({
+          url:"sendsms.php",
+          method:"POST",
+          async:false,
+          data:{customername:customername,customermobile:customermobile,customerzone:customerzone,customeramount:customeramount,paidstatus:paidstatus},
+          success:function(data){
+            console.log(data);
+          }
+        })
+      }
     }else{
-      $.ajax({
-        url:"sendsms.php",
-        method:"POST",
-        async:false,
-        data:{customername:customername,customermobile:customermobile,customeramount:customeramount,paidstatus:paidstatus},
-        success:function(data){
-          console.log(data);
-        }
-      })
+      console.log("sms sending isn't checked.");
     }
   }
+
+  function popup(){
+    $.ajax({
+      url:"popup.php",
+      method:"POST",
+      data:{popupid:popupid},
+      async:false,
+      success:function(data){
+        $(".popupcontainer").html(data);
+        $(".popupcontainer").css("display","flex");
+      }
+    })
+  }
+
+  $(document).on("click",".popupclose",function(){
+    $(".popupcontainer").css("display","none");
+  })
+
+  $(document).on("dblclick",".cashsalesidcol",function(){
+    popupid = $(this).data("popupid");
+    popup();
+  })
+  $(document).on("dblclick",".duesalesidcol",function(){
+    popupid = $(this).data("popupid");
+    popup();
+  })
+
+  $(document).on("click",".popupnamecopy",function(){
+    copytext = $('#popupname').text();
+    navigator.clipboard.writeText(copytext);
+    $(".notititle").text("Name copied successfully.");
+    $("#notification").removeClass("notification");
+    $("#notification").addClass("notificationon");
+    setTimeout(function(){
+      $("#notification").removeClass("notificationon");
+      $("#notification").addClass("notification");
+    }, 3000);
+  })
+  $(document).on("click",".popupmobilecopy",function(){
+    copytext = $('#popupmobile').text();
+    navigator.clipboard.writeText(copytext);
+    $(".notititle").text("Mobile copied successfully.");
+    $("#notification").removeClass("notification");
+    $("#notification").addClass("notificationon");
+    setTimeout(function(){
+      $("#notification").removeClass("notificationon");
+      $("#notification").addClass("notification");
+    }, 3000);
+  })
+  $(document).on("click",".popupzonecopy",function(){
+    copytext = $('#popupzone').text();
+    navigator.clipboard.writeText(copytext);
+    $(".notititle").text("Zone copied successfully.");
+    $("#notification").removeClass("notification");
+    $("#notification").addClass("notificationon");
+    setTimeout(function(){
+      $("#notification").removeClass("notificationon");
+      $("#notification").addClass("notification");
+    }, 3000);
+  })
+  $(document).on("click",".popupusernamecopy",function(){
+    copytext = $('#popupusername').text();
+    navigator.clipboard.writeText(copytext);
+    $(".notititle").text("Username copied successfully.");
+    $("#notification").removeClass("notification");
+    $("#notification").addClass("notificationon");
+    setTimeout(function(){
+      $("#notification").removeClass("notificationon");
+      $("#notification").addClass("notification");
+    }, 3000);
+  })
+  $(document).on("click",".popuppasswordcopy",function(){
+    copytext = $('#popuppassword').text();
+    navigator.clipboard.writeText(copytext);
+    $(".notititle").text("Password copied successfully.");
+    $("#notification").removeClass("notification");
+    $("#notification").addClass("notificationon");
+    setTimeout(function(){
+      $("#notification").removeClass("notificationon");
+      $("#notification").addClass("notification");
+    }, 3000);
+  })
 
   availableid();
   function availableid(){
@@ -121,7 +223,7 @@ $(window).ready(function (){
       data:{cashsalesidsearch:cashsalesidsearch,cashfrom:cashfrom,cashto:cashto},
       success:function(data){
         $(".cashsalesidlist").html(data);
-        console.log("success");
+        console.log("cash sales id fetched.");
       }
     })
   }
@@ -235,7 +337,6 @@ $(window).ready(function (){
       data:{duesalesidsearch:duesalesidsearch,duefrom:duefrom,dueto:dueto},
       success:function(data){
         $(".downloadcontainer").css("display","flex");
-        $(".fileuploadbtn").css("display","none");
         $(".notititle").text("Data exported successfully.");
         $("#notification").removeClass("notification");
         $("#notification").addClass("notificationon");
@@ -249,12 +350,10 @@ $(window).ready(function (){
 
   $(document).on("click",".downloadclose",function(){
     $(".downloadcontainer").css("display","none");
-    $(".fileuploadbtn").css("display","inline-block");
   })
 
   $(document).on("click",".downloadbtn",function(){
     $(".downloadcontainer").css("display","none");
-    $(".fileuploadbtn").css("display","inline-block");
   })
 
   $(document).on("click","#delete",function(){
@@ -282,10 +381,55 @@ $(window).ready(function (){
       }
     })
   }
+  dropdown = false;
+  $(document).on("click",".rightnav",function(){
+    if (dropdown == false) {
+      $(".dropdown").css("display","grid");
+      $(".rightnav").css("color","#422a64");
+      $(".rightnav").css("background","white");
+       dropdown = true;
+    }else{
+      $(".dropdown").css("display","none");
+      $(".rightnav").css("color","white");
+      $(".rightnav").css("background","#422a64");
+       dropdown = false;
+    }
+  })
 
-  $(document).on("click",".fileuploadbtn",function(){
+  //password change
+
+  $(document).on("click",".passwordchange",function(){
+    $(".passwordchangecontainer").css("display","flex");
+  })
+
+  $(document).on("click",".passwordchangebtn",function(){
+    newpass = $(".passwordchangefield").val();
+    $.ajax({
+      url:"index.php",
+      method:"POST",
+      data:{newpass:newpass},
+      success:function(data){
+        console.log("password changed successfully.");
+        $(".passwordchangecontainer").css("display","none");
+        document.getElementById('passwordchange').value = '';
+        $(".notititle").text("Password changed.");
+        $("#notification").removeClass("notification");
+        $("#notification").addClass("notificationon");
+        setTimeout(function(){
+          $("#notification").removeClass("notificationon");
+          $("#notification").addClass("notification");
+        }, 3000);
+      }
+    })
+  })
+
+  $(document).on("click",".passwordchangeclose",function(){
+    $(".passwordchangecontainer").css("display","none");
+    document.getElementById('passwordchange').value = '';
+  })
+
+  $(document).on("click",".uploaddata",function(){
     $(".fileuploadcontainer").css("display","flex");
-    $(".fileuploadbtn").css("display","none");
   })
 
   $(document).on("change","#file",function(){
@@ -304,7 +448,6 @@ $(window).ready(function (){
   })
   function fileuploadformclose(){
     $(".fileuploadcontainer").css("display","none");
-    $(".fileuploadbtn").css("display","inline-block");
     document.getElementById('file').value = '';
     $(".selectfile").text("Select file");
   }
@@ -344,23 +487,30 @@ $(window).ready(function (){
     }
   }
 
-  //login settings
-  $(document).on("click",".loginbtn",function () {
-    loginval = $("#pass").val();
+  // database backup
+
+  $(document).on("click",".backupdatabase",function (){
     $.ajax({
-      url:"loggingsettings.php",
+      url:"dbbackup.php",
       type:"POST",
-      data:{loginval:loginval},
       success:function (data){
         console.log(data);
-        location.reload();
+        $(".dbdownloadcontainer").css("display","flex");
       }
     })
   })
 
+  $(document).on("click",".dbdownloadclose",function(){
+    $(".dbdownloadcontainer").css("display","none");
+  })
+
+  $(document).on("click",".dbdownloadbtn",function(){
+    $(".dbdownloadcontainer").css("display","none");
+  })
+
   //logout settings
 
-  $(document).on("click",".logoutbtn",function(){
+  $(document).on("click",".logout",function(){
     logout = "logout";
     $.ajax({
       url:"index.php",

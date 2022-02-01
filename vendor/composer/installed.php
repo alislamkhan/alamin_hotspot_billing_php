@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '38f9f2952ad60f2f77a9388b2195c66b60f400be',
+        'reference' => 'ee67456fa5dea8b447b2a2ba9753bff409698623',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '38f9f2952ad60f2f77a9388b2195c66b60f400be',
+            'reference' => 'ee67456fa5dea8b447b2a2ba9753bff409698623',
             'dev_requirement' => false,
         ),
         'ezyang/htmlpurifier' => array(
@@ -26,6 +26,15 @@
             'install_path' => __DIR__ . '/../ezyang/htmlpurifier',
             'aliases' => array(),
             'reference' => '12ab42bd6e742c70c0a52f7b82477fcd44e64b75',
+            'dev_requirement' => false,
+        ),
+        'ifsnop/mysqldump-php' => array(
+            'pretty_version' => 'v2.9',
+            'version' => '2.9.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../ifsnop/mysqldump-php',
+            'aliases' => array(),
+            'reference' => 'fc9c119fe5d70af9a685cad6a8ac612fd7589e25',
             'dev_requirement' => false,
         ),
         'maennchen/zipstream-php' => array(

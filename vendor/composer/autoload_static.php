@@ -32,6 +32,10 @@ class ComposerStaticInitb5445815e43608cddd5b18395da4ccec
             'MyCLabs\\Enum\\' => 13,
             'Matrix\\' => 7,
         ),
+        'I' => 
+        array (
+            'Ifsnop\\' => 7,
+        ),
         'C' => 
         array (
             'Complex\\' => 8,
@@ -53,8 +57,8 @@ class ComposerStaticInitb5445815e43608cddd5b18395da4ccec
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -71,6 +75,10 @@ class ComposerStaticInitb5445815e43608cddd5b18395da4ccec
         'Matrix\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
+        ),
+        'Ifsnop\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ifsnop/mysqldump-php/src/Ifsnop',
         ),
         'Complex\\' => 
         array (

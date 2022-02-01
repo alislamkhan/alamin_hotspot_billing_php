@@ -11,14 +11,16 @@
     date_default_timezone_set("Asia/Dhaka");
     $customername=$_POST["customername"];
     $customermobile=$_POST["customermobile"];
+    $customerzone=$_POST["customerzone"];
     $customeramount=$_POST["customeramount"];
     $selldate= date("Y-m-d");
-    $selltime= date("h:i:sa");
+    $selltime= date("H:i:s");
     $paidstatus=$_POST["paidstatus"];
 
     $query2 = "UPDATE data SET 
     name = '$customername',
     mobile = '$customermobile',
+    zone = '$customerzone',
     amount = '$customeramount',
     sell_date = '$selldate',
     sell_time = '$selltime',
