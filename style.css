@@ -1440,6 +1440,7 @@ body {
     grid-template-columns: 100%;
     grid-template-rows: 100%;
   }
+  
   .availableidcolgridimg img {
     height: 80%;
     align-self: center;
