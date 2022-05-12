@@ -12,7 +12,13 @@
     $no = 1;
     while ($data = $result->fetch(PDO::FETCH_ASSOC)) {
     ?>
-        <div class="duesalesidcol" data-popupid="<?php echo $data['id']?>">
+        <div class="duesalesidcol" data-popupid="<?php echo $data['id']?>"
+          <?php 
+            if ($data['function'] == "on") {
+              echo "style = 'background-color: chartreuse;'";
+            }
+          ?>
+        >
           <div class="duesalesidcolgrid"><?php echo $no ?></div>
           <div class="duesalesidcolgrid"><?php echo $data['name'] ?></div>
           <div class="duesalesidcolgrid"><?php echo $data['mobile'] ?></div>
@@ -36,7 +42,13 @@
     $no = 1;
     while ($data = $result->fetch(PDO::FETCH_ASSOC)) {
     ?>
-        <div class="duesalesidcol" data-popupid="<?php echo $data['id']?>">
+        <div class="duesalesidcol" data-popupid="<?php echo $data['id']?>"
+          <?php 
+            if ($data['function'] == "on") {
+              echo "style = 'background-color: chartreuse;'";
+            }
+          ?>
+        >
           <div class="duesalesidcolgrid"><?php echo $no ?></div>
           <div class="duesalesidcolgrid"><?php echo $data['name'] ?></div>
           <div class="duesalesidcolgrid"><?php echo $data['mobile'] ?></div>

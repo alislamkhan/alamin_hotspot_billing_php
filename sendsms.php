@@ -305,39 +305,71 @@
   $db = new db();
 
   if (isset($_POST["customermobile"])) {
-
     $query = "SELECT * FROM data WHERE status = 'available' ORDER BY id ASC LIMIT 1";
     $result = $db->pdo->query($query);
     $check = $result->rowCount();
     if ($check==0) {
       echo "not found";
     }else {
-      $query2 = "SELECT * FROM data WHERE status = 'available' ORDER BY id ASC LIMIT 1";
-      $result2 = $db->pdo->query($query2);
-      $data = $result->fetch(PDO::FETCH_ASSOC);
-      $username = $data['username'];
-      $password = $data['password'];
-      $customername = $_POST["customername"];
-      $customermobile = "+88".$_POST["customermobile"];
-      $customeramount = $_POST["customeramount"];
-      $paidstatus = $_POST["paidstatus"];
-      $selldate= date("d-M-Y");
-      $selltime= date("h:i:sa");
-      $text = "Dear User,
-       Your ID: ".$username."
-       Your Password: ".$password."
-       Purchsed date: ".$selldate;
-      try {
-        // Send a message using the primary device.
-        $msg = sendSingleMessage($customermobile, $text);
-  
-        echo "Successfully sent a message.";
-      } catch (Exception $e) {
-        echo $e->getMessage();
-      }
-      echo $text;
-    }
+      $customerquantity = $_POST["customerquantity"];
+      if ($customerquantity == 1) {
+        $query2 = "SELECT * FROM data WHERE status = 'available' ORDER BY id ASC LIMIT 1";
+        $result2 = $db->pdo->query($query2);
+        $data = $result->fetch(PDO::FETCH_ASSOC);
 
+        $username = $data['username'];
+        $password = $data['password'];
+        $customername = $_POST["customername"];
+        $customermobile = "+88".$_POST["customermobile"];
+        $customeramount = $_POST["customeramount"];
+        $paidstatus = $_POST["paidstatus"];
+        $selldate= date("d-M-Y");
+        $selltime= date("h:i:sa");
+        $text = "Dear User,
+        Your ID: ".$username."
+        Your Password: ".$password."
+        Purchased date: ".$selldate;
+        echo $text;
+        try {
+          // Send a message using the primary device.
+          $msg = sendSingleMessage($customermobile, $text);
+    
+          echo "Successfully sent a message.";
+        } catch (Exception $e) {
+          echo $e->getMessage();
+        }
+      }else{
+        $query2 = "SELECT * FROM data WHERE status = 'available' ORDER BY id ASC LIMIT $customerquantity";
+        $result2 = $db->pdo->query($query2);
+
+        $customername = $_POST["customername"];
+        $customermobile = "+88".$_POST["customermobile"];
+        $customeramount = $_POST["customeramount"];
+        $paidstatus = $_POST["paidstatus"];
+        $selldate= date("d-M-Y");
+        $selltime= date("h:i:sa");
+
+        $text = "Dear User,
+
+";
+        while ($data = $result2->fetch(PDO::FETCH_ASSOC)) {
+          $text .= "Your ID: ".$data['username']."
+Your Password: ".$data['password']."
+          
+";
+        }
+        $text .= "purchased date: ".$selldate;
+        echo $text;
+        try {
+          // Send a message using the primary device.
+          $msg = sendSingleMessage($customermobile, $text);
+    
+          echo "Successfully sent a message.";
+        } catch (Exception $e) {
+          echo $e->getMessage();
+        }
+      }
+    }
   }
 
 ?>

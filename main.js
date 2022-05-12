@@ -9,8 +9,43 @@ $(window).ready(function (){
   year = date.getFullYear();
   currentdate = year+"-"+month+"-"+day;
 
+  $.ajax({
+    url:"config/config.php",
+    method:"POST",
+    async:false,
+    success:function(data){
+      console.log("function cleared.");
+    }
+  })
   $(document).keydown(function(event) {
     if (event.which === 13){
+      if ($(".inputname").val() == "") {
+        alert("Please provide a name first.");
+      }else if($(".inputmobile").val().length != 11){
+        alert("Please provide a valid number.");
+      }else if($(".inputamount").val() == ""){
+        alert("Please provide an amount first.");
+      }else{
+        if ($(".inputpaid").is(":checked")) {
+          popupid = -1;
+        }else{
+          popupid = 01;
+        }
+        sendsms();
+        sendit();
+      }
+      event.preventDefault();
+    }
+  });
+
+  $(document).on("click",".sendbtn",function(){
+    if ($(".inputname").val() == "") {
+      alert("Please provide a name first.");
+    }else if($(".inputmobile").val().length != 11){
+      alert("Please provide a valid number.");
+    }else if($(".inputamount").val() == ""){
+      alert("Please provide an amount first.");
+    }else{
       if ($(".inputpaid").is(":checked")) {
         popupid = -1;
       }else{
@@ -18,22 +53,10 @@ $(window).ready(function (){
       }
       sendsms();
       sendit();
-      popup();
-      event.preventDefault();
     }
-  });
-
-  $(document).on("click",".sendbtn",function(){
-    if ($(".inputpaid").is(":checked")) {
-      popupid = -1;
-    }else{
-      popupid = 01;
-    }
-    sendsms();
-    sendit();
-    popup();
   })
   function sendit(){
+    customerquantity = $(".inputquantity").val();
     customername = $(".inputname").val();
     customerzone = $(".inputzone").val();
     customermobile = $(".inputmobile").val();
@@ -43,31 +66,75 @@ $(window).ready(function (){
     }else{
       paidstatus = "due";
     }
-    $.ajax({
-      url:"sendit.php",
-      method:"POST",
-      async:false,
-      data:{customername:customername,customermobile:customermobile,customerzone:customerzone,customeramount:customeramount,paidstatus:paidstatus},
-      success:function(data){
-        console.log("send success");
-        availableid();
-        cashsalesid();
-        duesalesid();
+
+    if (customerquantity == 1) {
+      $.ajax({
+        url:"sendit.php",
+        method:"POST",
+        async:false,
+        data:{customername:customername,customermobile:customermobile,customerzone:customerzone,customeramount:customeramount,paidstatus:paidstatus},
+        success:function(data){
+          console.log(data);
+          availableid();
+          cashsalesid();
+          duesalesid();
+          document.getElementById('name').value = '';
+          document.getElementById('mobile').value = '';
+          document.getElementById('zone').value = '';
+          document.getElementById('amount').value = '';
+          $("#paid").prop("checked", false);
+          $("#sms").prop("checked", true);
+          $(".notititle").text("Id sent successfully");
+          $("#notification").removeClass("notification");
+          $("#notification").addClass("notificationon");
+          setTimeout(function(){
+            $("#notification").removeClass("notificationon");
+            $("#notification").addClass("notification");
+          }, 3000);
+        }
+      })
+      popup();
+
+    }else if(customerquantity > 1){
+
+      for (let i = 0; i < customerquantity; i++) {
+        setTimeout(function(){
+        $.ajax({
+          url:"sendit.php",
+          method:"POST",
+          async:false,
+          data:{customername:customername,customermobile:customermobile,customerzone:customerzone,customeramount:customeramount,paidstatus:paidstatus},
+          success:function(data){
+            console.log(data);
+            availableid();
+            cashsalesid();
+            duesalesid();
+          }
+        })
+        },i*1000);
+      }
+      $(".submitformdisable").css("display","block");
+      setTimeout(function(){
         document.getElementById('name').value = '';
         document.getElementById('mobile').value = '';
         document.getElementById('zone').value = '';
         document.getElementById('amount').value = '';
+        document.getElementById('quantity').value = '1';
         $("#paid").prop("checked", false);
         $("#sms").prop("checked", true);
-        $(".notititle").text("Id sent successfully.");
+        $(".notititle").text("All Id sent successfully");
         $("#notification").removeClass("notification");
         $("#notification").addClass("notificationon");
         setTimeout(function(){
           $("#notification").removeClass("notificationon");
           $("#notification").addClass("notification");
         }, 3000);
-      }
-    })
+        $(".submitformdisable").css("display","none");
+      },customerquantity*1000-900);
+
+    }else{
+      alert("error");
+    }
   }
 
   function sendsms(){
@@ -83,15 +150,16 @@ $(window).ready(function (){
     }
 
     if ($(".inputsms").is(":checked")) {
+      customerquantity = $(".inputquantity").val();
       lenth = customermobile.length;
       if (lenth < 11) {
-        console.log("without sms");
+        console.log("number is less than 11 digit");
       }else{
         $.ajax({
           url:"sendsms.php",
           method:"POST",
           async:false,
-          data:{customername:customername,customermobile:customermobile,customerzone:customerzone,customeramount:customeramount,paidstatus:paidstatus},
+          data:{customername:customername,customermobile:customermobile,customerzone:customerzone,customeramount:customeramount,paidstatus:paidstatus,customerquantity:customerquantity},
           success:function(data){
             console.log(data);
           }

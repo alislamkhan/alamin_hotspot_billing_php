@@ -34,11 +34,15 @@ if (isset($_POST['newpass'])) {
   </div>
 <div class="submitandavailableidcontainer">
     <div class="submitidformcontainer">
+      <div class="submitformdisable"></div>
       <input type="text" name="name" id="name" class="inputname" placeholder="Name" autocomplete="off">
       <input type="text" name="mobile" id="mobile" class="inputmobile" placeholder="Mobile" autocomplete="off">
       <input type="text" name="zone" id="zone" class="inputzone" placeholder="Zone" autocomplete="off">
       <input type="text" name="amount" id="amount" class="inputamount" placeholder="Amount" autocomplete="off">
-      <input type="checkbox" name="paid" id="paid" class="inputpaid">
+      <div class="paidandquantitycontainer">
+        <input type="checkbox" name="paid" id="paid" class="inputpaid">
+        <input type="number" name="quantity" id="quantity" class="inputquantity" value="1" autocomplete="off">
+      </div>
       <div class="sendsms">
         <input type="checkbox" name="sms" id="sms" class="inputsms" checked>
         <div class="sendsmstitle">Send SMS?</div>

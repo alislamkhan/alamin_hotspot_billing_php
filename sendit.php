@@ -24,7 +24,8 @@
     amount = '$customeramount',
     sell_date = '$selldate',
     sell_time = '$selltime',
-    status = '$paidstatus'
+    status = '$paidstatus',
+    function = 'on'
     WHERE status = 'available' ORDER BY id ASC LIMIT 1";
     $result2 = $db->pdo->query($query2);
   }
